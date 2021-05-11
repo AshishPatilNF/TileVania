@@ -6,7 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    float runSpeed = 8f;
+    float speed = 5f;
 
     Rigidbody2D rigidBody;
 
@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
 
     Collider2D collide;
 
+    float gravityAtStart;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         collide = GetComponent<Collider2D>();
+        gravityAtStart = rigidBody.gravityScale;
     }
 
     void Update()
@@ -26,14 +29,14 @@ public class Player : MonoBehaviour
         Run();
 
         if (CrossPlatformInputManager.GetButtonDown("Jump") && collide.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
             Jump();
-        }
+
+        Climb();
     }
 
     private void Run()
     {
-        rigidBody.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * runSpeed, rigidBody.velocity.y);
+        rigidBody.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, rigidBody.velocity.y);
         bool isRunning = Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon;
         animator.SetBool("IsRunning", isRunning);
 
@@ -46,5 +49,19 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rigidBody.velocity += new Vector2(0, 28);
+    }
+
+    private void Climb()
+    {
+        if(!collide.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+        {
+            rigidBody.gravityScale = gravityAtStart;
+            animator.SetBool("IsClimbing", false);
+            return;
+        }
+
+        rigidBody.gravityScale = 0;
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, CrossPlatformInputManager.GetAxis("Vertical") * speed);
+        animator.SetBool("IsClimbing", Mathf.Abs(rigidBody.velocity.y) > Mathf.Epsilon);
     }
 }
