@@ -10,13 +10,14 @@ public class Player : MonoBehaviour
 
     Rigidbody2D rigidBody;
 
-    // Start is called before the first frame update
+    Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Run();
@@ -24,6 +25,13 @@ public class Player : MonoBehaviour
 
     private void Run()
     {
-        rigidBody.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * runSpeed, 0);
+        rigidBody.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * runSpeed, rigidBody.velocity.y);
+        bool isRunning = Mathf.Abs(rigidBody.velocity.x) > Mathf.Epsilon;
+        animator.SetBool("IsRunning", isRunning);
+
+        if (isRunning)
+        {
+            transform.localScale = new Vector2(Mathf.Sign(rigidBody.velocity.x), 1);
+        }
     }
 }
