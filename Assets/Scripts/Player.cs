@@ -6,21 +6,29 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    float runSpeed = 5f;
+    float runSpeed = 8f;
 
     Rigidbody2D rigidBody;
 
     Animator animator;
 
+    Collider2D collide;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
+        collide = GetComponent<Collider2D>();
     }
 
     void Update()
     {
         Run();
+
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && collide.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            Jump();
+        }
     }
 
     private void Run()
@@ -33,5 +41,10 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector2(Mathf.Sign(rigidBody.velocity.x), 1);
         }
+    }
+
+    private void Jump()
+    {
+        rigidBody.velocity += new Vector2(0, 28);
     }
 }

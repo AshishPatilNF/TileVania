@@ -2329,7 +2329,7 @@ GameObject:
   - component: {fileID: 857578951}
   - component: {fileID: 857578953}
   - component: {fileID: 857578952}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3716,6 +3716,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1727585697, guid: 7a571922ef2d68348949a99787a65e8f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8045185263347697953, guid: 7a571922ef2d68348949a99787a65e8f, type: 3}
       propertyPath: m_Name
       value: Player
