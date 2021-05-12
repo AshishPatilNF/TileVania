@@ -5,11 +5,11 @@ Tile Vania is a 2D Platformer game.
 
 ### Controls:
 
-1. .
+1. Use the "A Key" or the "Left Arrow Key" to make the character run left and the "D Key" or the "Right Arrow Key" to make the character run right.
 
-2. .
+2. Use the "Space Key" to make the character jump.
 
-3. .
+3. Use the "W Key" or the "Up Arrow Key" to make the character climb Up the ladder and the "S Key" or the "Down Arrow Key" to make the character climb down the ladder.
 
 This project was developed for the better understanding of Unity Engine and C#.
 
