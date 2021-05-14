@@ -18,12 +18,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         rigidBody.velocity = new Vector2(speed, 0);
-        Debug.Log(rigidBody.velocity);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        transform.localScale = new Vector2(Mathf.Sign(speed) * -1, 1);
+        transform.localScale = new Vector2(transform.localScale.x * -1, 1);
         speed *= -1;
     }
 }
