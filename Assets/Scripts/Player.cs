@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     CapsuleCollider2D capsuleBodyCollider;
 
+    bool isAlive = true;
+
     float gravityAtStart;
 
     void Start()
@@ -29,12 +31,22 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Run();
+        if(capsuleBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        {
+            isAlive = false;
+            animator.SetTrigger("Death");
+            rigidBody.velocity = new Vector2(0, 50);
+        }
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump") && boxFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-            Jump();
+        if(isAlive)
+        {
+            Run();
 
-        Climb();
+            if (CrossPlatformInputManager.GetButtonDown("Jump") && boxFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+                Jump();
+
+            Climb();
+        }
     }
 
     private void Run()
