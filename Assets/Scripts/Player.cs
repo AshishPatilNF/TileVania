@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(capsuleBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        if(capsuleBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")))
         {
             isAlive = false;
             animator.SetTrigger("Death");
