@@ -9113,6 +9113,14 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 600947666}
+    - target: {fileID: 988379524524778695, guid: 293e5a00c99499f4db88907b38098e55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 988379524524778695, guid: 293e5a00c99499f4db88907b38098e55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 988379524555738686, guid: 293e5a00c99499f4db88907b38098e55, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -9121,6 +9129,14 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 8045185263799161986}
+    - target: {fileID: 988379524555739072, guid: 293e5a00c99499f4db88907b38098e55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 988379524555739072, guid: 293e5a00c99499f4db88907b38098e55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 988379524639442240, guid: 293e5a00c99499f4db88907b38098e55, type: 3}
       propertyPath: orthographic size
       value: 7
