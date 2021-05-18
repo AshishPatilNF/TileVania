@@ -21,4 +21,9 @@ public class LevelLoader : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadCurrentScene()
+    {
+        SceneManager.LoadScene(currentIndex);
+    }
 }
