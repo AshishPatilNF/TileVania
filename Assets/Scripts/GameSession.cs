@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameSession : MonoBehaviour
 {
     [SerializeField]
+    TextMeshProUGUI livesText;
+
+    [SerializeField]
+    TextMeshProUGUI scoreText;
+
     int playerLives = 3;
+
+    int score = 0;
 
     private void Awake()
     {
@@ -18,7 +26,8 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        livesText.text = playerLives.ToString();
+        scoreText.text = score.ToString();
     }
 
     public void ReduceLives()
@@ -26,6 +35,7 @@ public class GameSession : MonoBehaviour
         if (playerLives > 1)
         {
             playerLives--;
+            livesText.text = playerLives.ToString();
             FindObjectOfType<LevelLoader>().LoadCurrentScene();
         }
         else
@@ -33,5 +43,11 @@ public class GameSession : MonoBehaviour
             FindObjectOfType<LevelLoader>().LoadMainMenu();
             Destroy(this.gameObject);
         }
+    }
+
+    public void AddCoin(int coin)
+    {
+        score += coin;
+        scoreText.text = score.ToString();
     }
 }
