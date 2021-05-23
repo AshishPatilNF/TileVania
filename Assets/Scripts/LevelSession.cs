@@ -10,11 +10,14 @@ public class LevelSession : MonoBehaviour
     private void Awake()
     {
         if (FindObjectsOfType<LevelSession>().Length > 1)
+        {
+            gameObject.SetActive(false);
             Destroy(this.gameObject);
+        }
         else
             DontDestroyOnLoad(this.gameObject);
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         currentIndex = SceneManager.GetActiveScene().buildIndex;
@@ -23,6 +26,9 @@ public class LevelSession : MonoBehaviour
     private void Update()
     {
         if (currentIndex != SceneManager.GetActiveScene().buildIndex)
+        {
+            gameObject.SetActive(false);
             Destroy(this.gameObject);
+        }
     }
 }

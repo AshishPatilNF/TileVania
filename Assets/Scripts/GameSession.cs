@@ -11,6 +11,7 @@ public class GameSession : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI scoreText;
 
+    [SerializeField]
     int playerLives = 3;
 
     int score = 0;
@@ -18,7 +19,10 @@ public class GameSession : MonoBehaviour
     private void Awake()
     {
         if (FindObjectsOfType<GameSession>().Length > 1)
+        {
+            gameObject.SetActive(false);
             Destroy(this.gameObject);
+        }
         else
             DontDestroyOnLoad(this.gameObject);
     }
@@ -40,6 +44,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
+            Destroy(FindObjectOfType<LevelSession>().gameObject);
             FindObjectOfType<LevelLoader>().LoadMainMenu();
             Destroy(this.gameObject);
         }

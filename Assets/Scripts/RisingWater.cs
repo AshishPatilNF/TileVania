@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RisingWater : MonoBehaviour
 {
-    [SerializeField]
     float waterSpeed = 0.4f;
 
     void Update()

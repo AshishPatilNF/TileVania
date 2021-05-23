@@ -22,8 +22,19 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
+
     public void LoadCurrentScene()
     {
         SceneManager.LoadScene(currentIndex);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+            Application.Quit();
     }
 }

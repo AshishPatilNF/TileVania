@@ -16,15 +16,12 @@ public class Player : MonoBehaviour
 
     CapsuleCollider2D capsuleBodyCollider;
 
-    GameSession gameSession;
-
     bool isAlive = true;
 
     float gravityAtStart;
 
     void Start()
     {
-        gameSession = FindObjectOfType<GameSession>();
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         boxFeetCollider = GetComponent<BoxCollider2D>();
@@ -36,7 +33,7 @@ public class Player : MonoBehaviour
     {
         if(capsuleBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")))
         {
-            gameSession.ReduceLives();
+            FindObjectOfType<GameSession>().ReduceLives();
             isAlive = false;
             animator.SetTrigger("Death");
             rigidBody.velocity = new Vector2(0, 50);
